@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ice
  */
-@WebServlet(name = "TarefasServlet", urlPatterns = {"/index.html", "/tarefas.html", "/tarefa.html"})
+@WebServlet(name = "TarefasServlet", urlPatterns = {"/index.html", "/tarefas.html", "/tarefa-nova.html"})
 public class TarefasServlet extends HttpServlet {
 
     @Override
@@ -30,6 +30,7 @@ public class TarefasServlet extends HttpServlet {
         Map<String, String> rotas = new HashMap<>();
         rotas.put("/index.html", "br.ufjf.dcc192.IndexCommand");
         rotas.put("/tarefas.html", "br.ufjf.dcc192.TarefasListCommand");
+        rotas.put("/tarefa-nova.html", "br.ufjf.dcc192.TarefasNewCommand");
         
         String clazzName = rotas.get(request.getServletPath());
         try {

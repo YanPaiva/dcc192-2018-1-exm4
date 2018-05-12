@@ -32,13 +32,16 @@ public class TarefaDAO {
         }
     }
 
-    public List<String> listAll() {
-        List<String> tarefas = new ArrayList<>();
+    public List<Tarefa> listAll() {
+        List<Tarefa> tarefas = new ArrayList<>();
         try {
             Statement comando = conexao.createStatement();
-            ResultSet resultado = comando.executeQuery("SELECT titulo from tarefa");
+            ResultSet resultado = comando.executeQuery("SELECT id,titulo from tarefa");
             while (resultado.next()) {
-                tarefas.add(resultado.getString("titulo"));
+                Tarefa tarefa = new Tarefa();
+                tarefa.setId(resultado.getLong("id"));
+                tarefa.setTitulo(resultado.getString("titulo"));
+                tarefas.add(tarefa);
 
             }
             resultado.close();
@@ -47,6 +50,26 @@ public class TarefaDAO {
             Logger.getLogger(TarefaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return tarefas;
+    }
+
+    void create(String titulo) {
+        try {
+            Statement comando = conexao.createStatement();
+            comando.executeUpdate(String.format("INSERT INTO tarefa(titulo) VALUES('%s')", titulo));
+            comando.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TarefaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    void delete(Long id){
+        try {
+            Statement comando = conexao.createStatement();
+            comando.executeUpdate(String.format("DELETE FROM tarefa WHERE id=%d", id));
+            comando.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TarefaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

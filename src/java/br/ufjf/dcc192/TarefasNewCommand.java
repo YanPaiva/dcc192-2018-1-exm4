@@ -21,7 +21,7 @@ public class TarefasNewCommand implements Comando{
     @Override
     public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/tarefas/new.jsp");
-        List<String> tarefas = TarefaDAO.getInstance().listAll();
+        List<Tarefa> tarefas = TarefaDAO.getInstance().listAll();
         request.setAttribute("titulo", "Nova de Tarefa");
         dispacher.forward(request, response);
     }

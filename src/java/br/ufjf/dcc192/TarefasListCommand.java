@@ -12,7 +12,7 @@ public class TarefasListCommand implements Comando{
     @Override
     public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/tarefas/list.jsp");
-        List<String> tarefas = TarefaDAO.getInstance().listAll();
+        List<Tarefa> tarefas = TarefaDAO.getInstance().listAll();
         request.setAttribute("titulo", "Lista de Tarefas");
         request.setAttribute("tarefas", tarefas);
         dispacher.forward(request, response);

@@ -35,9 +35,6 @@ public class TarefaDAO {
     public List<String> listAll() {
         List<String> tarefas = new ArrayList<>();
         try {
-            tarefas.add("Comprar ovos");
-            tarefas.add("Comprar farinha");
-            tarefas.add("Comprar açúcar");
             Statement comando = conexao.createStatement();
             ResultSet resultado = comando.executeQuery("SELECT titulo from tarefas");
             while (resultado.next()) {

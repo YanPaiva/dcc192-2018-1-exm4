@@ -36,7 +36,7 @@ public class TarefaDAO {
         List<String> tarefas = new ArrayList<>();
         try {
             Statement comando = conexao.createStatement();
-            ResultSet resultado = comando.executeQuery("SELECT titulo from tarefas");
+            ResultSet resultado = comando.executeQuery("SELECT titulo from tarefa");
             while (resultado.next()) {
                 tarefas.add(resultado.getString("titulo"));
 

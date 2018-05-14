@@ -4,8 +4,11 @@
 <p><a href="tarefa-nova.html">Tarefa novas</a></p>
 
 <table>
+    <th>id</th>
+    <th>titulo</th>
     <c:forEach var="tarefa" items="${tarefas}">
         <tr>
+            <td>${tarefa.id}</td>
             <td>${tarefa.titulo}</td>
             <td>
                 <form method="post" action="tarefa-exclui.html">
